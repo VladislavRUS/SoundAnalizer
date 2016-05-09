@@ -1,5 +1,3 @@
-import javax.sound.sampled.LineUnavailableException;
-
 public class SoundController {
 
     private SoundData soundData;
@@ -16,8 +14,8 @@ public class SoundController {
                 try {
                     SoundResult result = soundData.getData();
                     soundView.drawData(result);
-                    Thread.sleep(100);
-                } catch (LineUnavailableException | InterruptedException e) {
+                    Thread.sleep(500);
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

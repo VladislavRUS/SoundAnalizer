@@ -8,6 +8,8 @@ public class GraphView extends JPanel{
     public static final int HEIGHT = 600;
     private SoundResult soundResult;
     private long lastTextRedraw;
+    private static Font mainFreq = new Font("Verdana", Font.BOLD, 25);
+    private static Font underLine = new Font("Verdana", Font.ITALIC, 10);
 
     public void setSoundResult(SoundResult soundResult) {
         this.soundResult = soundResult;
@@ -24,7 +26,7 @@ public class GraphView extends JPanel{
             for (Map.Entry<Double, Double> entry : data.entrySet()) {
                 int freq = entry.getKey().intValue();
                 Double mag = entry.getValue();
-                g.setFont(new Font("Verdana", Font.BOLD, 25));
+                g.setFont(mainFreq);
                 if(mag == maxMagnitude && (System.currentTimeMillis() - lastTextRedraw > 50)){
                     g.drawString(String.valueOf(freq) + " HZ ", WIDTH/2, HEIGHT/2);
                     lastTextRedraw = System.currentTimeMillis();
@@ -32,9 +34,10 @@ public class GraphView extends JPanel{
                 g.drawLine(freq/freqScale, HEIGHT - 60, freq/freqScale, HEIGHT - 60 - mag.intValue()/magScale);
             }
             for(int i = 0; i < SoundData.MAX_FREQUENCY; i += 100){
-                g.setFont(new Font("Verdana", Font.ITALIC, 10));
+                g.setFont(underLine);
                 g.drawString(String.valueOf(i), i/freqScale, HEIGHT - 50);
             }
+            soundResult.getSoundData().clear();
         }
     }
 }

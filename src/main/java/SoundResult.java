@@ -16,4 +16,12 @@ public class SoundResult {
     public double getMaxMagnitude() {
         return maxMagnitude;
     }
+
+    public void setSoundData(Map<Double, Double> soundData) {
+        this.soundData = soundData;
+    }
+
+    public void setMaxMagnitude(double maxMagnitude) {
+        this.maxMagnitude = maxMagnitude;
+    }
 }

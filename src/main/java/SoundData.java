@@ -5,6 +5,7 @@ import java.util.Map;
 public class SoundData {
     private static final int SAMPLE_RATE = 8000; //Hz
     public static final int bufferSize = 2048;
+    public static final int MAX_FREQUENCY = 3500;
     private final AudioFormat format;
     private final DataLine.Info info;
     private final TargetDataLine line;
@@ -30,6 +31,8 @@ public class SoundData {
             double maxMagnitude = 0;
             for(int i = 0; i < bufferSize/2; i++){
                 double freq = Math.round(i*SAMPLE_RATE/bufferSize);
+                if(freq > MAX_FREQUENCY)
+                    continue;
                 double magnitude = Math.abs(Math.round(complexResults[i].getReal()));
                 if(magnitude > maxMagnitude){
                     maxMagnitude = magnitude;

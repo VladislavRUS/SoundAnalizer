@@ -7,7 +7,6 @@ public class GraphView extends JPanel{
     public static final int WIDTH = 1200;
     public static final int HEIGHT = 600;
     private SoundResult soundResult;
-    private long lastTextRedraw;
     private static Font mainFreq = new Font("Verdana", Font.BOLD, 25);
     private static Font underLine = new Font("Verdana", Font.ITALIC, 10);
 
@@ -27,9 +26,8 @@ public class GraphView extends JPanel{
                 int freq = entry.getKey().intValue();
                 Double mag = entry.getValue();
                 g.setFont(mainFreq);
-                if(mag == maxMagnitude && (System.currentTimeMillis() - lastTextRedraw > 50)){
+                if(mag == maxMagnitude){
                     g.drawString(String.valueOf(freq) + " HZ ", WIDTH/2, HEIGHT/2);
-                    lastTextRedraw = System.currentTimeMillis();
                 }
                 g.drawLine(freq/freqScale, HEIGHT - 60, freq/freqScale, HEIGHT - 60 - mag.intValue()/magScale);
             }

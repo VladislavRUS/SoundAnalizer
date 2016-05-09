@@ -4,10 +4,10 @@ import java.util.Map;
 
 public class SoundData {
     private static final int SAMPLE_RATE = 8000; //Hz
+    public static final int bufferSize = 2048;
     private final AudioFormat format;
     private final DataLine.Info info;
     private final TargetDataLine line;
-    public static final int bufferSize = 2048;
 
     public SoundData() throws LineUnavailableException {
         format = getFormat();

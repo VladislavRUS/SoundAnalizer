@@ -21,7 +21,6 @@ public class GraphView extends JPanel{
             double maxMagnitude = soundResult.getMaxMagnitude();
             int magScale = (int) Math.ceil(maxMagnitude / HEIGHT);
             int freqScale = (int)Math.ceil(Math.ceil(SoundData.MAX_FREQUENCY/(WIDTH))) + 1;
-            System.out.println(freqScale);
             for (Map.Entry<Double, Double> entry : data.entrySet()) {
                 int freq = entry.getKey().intValue();
                 Double mag = entry.getValue();
